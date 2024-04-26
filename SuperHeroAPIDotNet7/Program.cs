@@ -1,5 +1,7 @@
 ﻿global using SuperHeroAPIDotNet7.Models;
-using SuperHeroAPIDotNet7.Services.SuperHeroService;
+global using Microsoft.EntityFrameworkCore;
+global using SuperHeroAPIDotNet7.Services.SuperHeroService;
+global using SuperHeroAPIDotNet7.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ISuperHeroService, SuperHeroService>();
+builder.Services.AddDbContext<DataContext>();
 
 var app = builder.Build();
 
